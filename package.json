@@ -1,0 +1,11 @@
+{
+  "name": "docgpt",
+  "version": "1.0.0",
+  "description": "<h1 align='center'> DocGPT </h1>\r <p align='center'> A handy tool to initiate a conversation with your essential documents. </p>",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}
