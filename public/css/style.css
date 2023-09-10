@@ -107,12 +107,13 @@ body {
 .flex-item-0-item-2 span:hover{
   cursor: pointer;
 }
-/* .on-email-click{
-  width: 25vw;
+.on-email-click{
+  width: 22vw;
   height: 10vw;
   position: absolute;
-  bottom: -1rem;
-  left: 0px;
+  bottom: 6rem;
+  left: 1rem;
+  margin: auto;
   border: 2px solid black;
   border-radius: 5px;
   color: white;
@@ -123,7 +124,10 @@ body {
   color: white;
   display: block;
   text-decoration: none;
-} */
+}
+.remove-on-email-click{
+  display: none;
+}
 .flex-item-1-item-0 {
   width: 75vw;
   height: 30vh;
@@ -208,7 +212,7 @@ textarea {
 @media (max-width: 915px) {
   /* CSS rules for tablet layout */
   .flex-item-1-item-1 {
-    overflow: auto;
+    overflow-y: scroll;
     scrollbar-width: none;
     display: flex;
     flex-direction: column;
@@ -224,6 +228,11 @@ textarea {
     margin-top: 0.5rem;
     border-radius: 5px;
     font-family: apple-font-light;
+  }
+  .on-email-click{
+    left: 5rem;
+    width: 30vw;
+    height: 10vh;
   }
   
 }
@@ -242,6 +251,12 @@ textarea {
     border-radius: 5px;
     margin-right: 1rem;
   }
+  .on-email-click{
+    left: 1rem;
+    width: 40vw;
+    height: 10vh;
+  }
+  
   .flex-item-1-item-0 span{
     display: inline;
     float: left;

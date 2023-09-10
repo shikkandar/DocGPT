@@ -4,31 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sign in | DocGPT</title>
-    <link rel="stylesheet" href="../../public/css/signin.css" />
+    <link rel="stylesheet" href="/css/signin.css" />
   </head>
   <body>
     <div class="container">
       <div>
         <h1>DocGPT</h1>
         <h4>Hey folks! Welcome Back</h4>
-        <form action="">
+        <form method="post" action="">
           <li>
             <label for="">Email</label>
           </li>
           <li>
-            <input type="email" />
+            <input  name="email" type="email" />
           </li>
           
           <li>
             <label for="">Password</label>
           </li>
           <li>
-            <input type="password" />
+            <input  name="password" type="password" />
           </li>
           <button>Continue</button>
         </form>
         <div>
-          <h4>Don't have one? <a href="./signup.html">Create one</a></h4>
+          <h4>Don't have one? <a href="/auth/signup">Create one</a></h4>
         </div>
         <div>
           <h3>By continuing you agree to our <a href="">Terms</a> and <a href="">Privacy Policy</a></h3>
