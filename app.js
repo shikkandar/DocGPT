@@ -3,6 +3,7 @@ import path from 'path';
 import authRoutes from './routes/authRoutes.js';
 import homeRoutes from './routes/homeRoutes.js';
 import connectDB from './db/connectDB.js';
+import uploadRoutes from './routes/uploadRoutes.js';
 
 const DATABASE_URL =
     process.env.DATABASE_URL || 'mongodb://127.0.0.1:27017/accountDB';
@@ -21,7 +22,9 @@ app.set('view engine', 'ejs');
 
 //Routes
 app.use('/', homeRoutes);
+app.use('/home', homeRoutes);
 app.use('/auth', authRoutes);
+app.use('/doc', uploadRoutes);
 
 app.listen('3000', () => {
     console.log('Server is running on port 3000');

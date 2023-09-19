@@ -4,8 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DocGPT</title>
-    <link rel="stylesheet" href="/css/style.css" />
-    <script defer src="/js/script.js"></script>
+    <link rel="stylesheet" href="/css/conversation.css" />
   </head>
   <body>
     <div class="main-container">
@@ -201,7 +200,7 @@
       <div class="main-flex-item-1">
         <div class="flex-item-1-item-0">
           <h1>
-            <span class="float-left" onclick="showAndCloseSideBar()"
+            <span onclick="showAndCloseSideBar()"
               ><svg
                 width="24"
                 height="24"
@@ -218,141 +217,28 @@
                     fill="black"
                   />
                 </g>
-              </svg> </span
-            >DocGPT
-            <span class="float-right">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g id="24 / basic / plus">
-                  <path
-                    id="icon"
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M13 11H22V13H13V22H11V13H2V11H11V2H13V11Z"
-                    fill="black"
-                  />
-                </g>
-              </svg>
-            </span>
-          </h1>
-        </div>
-        <div class="flex-item-1-item-1">
-          <div class="examples" id="content">
-            <div id="icon">
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 68 68"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g id="24 / various / brightness-high">
-                  <path
-                    id="icon"
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M36.8333 14.3675C35.908 14.2352 34.962 14.1667 34 14.1667C33.038 14.1667 32.092 14.2352 31.1667 14.3675V2.96039C32.0999 2.8763 33.0449 2.83334 34 2.83334C34.9551 2.83334 35.9001 2.8763 36.8333 2.96039V14.3675ZM19.8333 34C19.8333 41.824 26.176 48.1667 34 48.1667C41.824 48.1667 48.1667 41.824 48.1667 34C48.1667 26.176 41.824 19.8333 34 19.8333C26.176 19.8333 19.8333 26.176 19.8333 34ZM42.5 34C42.5 38.6944 38.6944 42.5 34 42.5C29.3056 42.5 25.5 38.6944 25.5 34C25.5 29.3056 29.3056 25.5 34 25.5C38.6944 25.5 42.5 29.3056 42.5 34ZM36.8333 65.0396V53.6325C35.908 53.7648 34.962 53.8333 34 53.8333C33.038 53.8333 32.092 53.7648 31.1667 53.6325V65.0396C32.0999 65.1237 33.0449 65.1667 34 65.1667C34.9551 65.1667 35.9001 65.1237 36.8333 65.0396ZM53.6325 31.1667H65.0396C65.1237 32.0999 65.1667 33.0449 65.1667 34C65.1667 34.9551 65.1237 35.9001 65.0396 36.8333H53.6325C53.7648 35.908 53.8333 34.962 53.8333 34C53.8333 33.038 53.7648 32.092 53.6325 31.1667ZM14.1667 34C14.1667 33.038 14.2351 32.092 14.3675 31.1667H2.96038C2.87629 32.0999 2.83333 33.0449 2.83333 34C2.83333 34.9551 2.87629 35.9001 2.96038 36.8333H14.3675C14.2351 35.908 14.1667 34.962 14.1667 34ZM45.8778 18.1152L53.944 10.0491C55.3976 11.2608 56.7392 12.6024 57.9509 14.056L49.8848 22.1222C48.7471 20.6032 47.3968 19.2529 45.8778 18.1152ZM10.0491 14.056L18.1152 22.1222C19.2529 20.6032 20.6032 19.2529 22.1222 18.1152L14.056 10.0491C12.6024 11.2608 11.2608 12.6024 10.0491 14.056ZM49.8848 45.8778L57.9509 53.944C56.7392 55.3976 55.3976 56.7392 53.944 57.9509L45.8778 49.8848C47.3968 48.7471 48.7471 47.3968 49.8848 45.8778ZM14.056 57.9509L22.1222 49.8848C20.6032 48.7471 19.2529 47.3968 18.1152 45.8778L10.0491 53.944C11.2608 55.3976 12.6024 56.7392 14.056 57.9509Z"
-                    fill="black"
-                  />
-                </g>
-              </svg>
-              <h3>Examples</h3>
-            </div>
-            <div id="info">
-              <h4>“Highlight the most crucial clauses in the documents”</h4>
-            </div>
-            <div id="info">
-              <h4>
-                “Could explain me the most important part of the medical report”
-              </h4>
-            </div>
-            <div id="info">
-              <h4>
-                “Analyze my financial report and explain to me like I am five”
-              </h4>
-            </div>
-          </div>
-          <div class="capabilities" id="content">
-            <div id="icon">
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 68 68"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g id="24 / basic / lightning">
-                  <path
-                    id="icon"
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M11.1049 42.5H25.5V64.7439L56.8951 25.5H42.5V3.25612L11.1049 42.5ZM31.1667 36.8333H22.8951L36.8333 19.4105V31.1667H45.1049L31.1667 48.5895V36.8333Z"
-                    fill="black"
-                  />
-                </g>
-              </svg>
-              <h3>Capabilities</h3>
-            </div>
-            <div id="info">
-              <h4>“Highlight the most crucial clauses in the documents”</h4>
-            </div>
-            <div id="info">
-              <h4>“Highlight the most crucial clauses in the documents”</h4>
-            </div>
-            <div id="info">
-              <h4>“Highlight the most crucial clauses in the documents”</h4>
-            </div>
-          </div>
-          <div class="limitations" id="content">
-            <div id="icon">
-              <svg
-                width="48"
-                height="48"
-                viewBox="0 0 68 68"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g id="24 / notifications / alert-triangle">
-                  <path
-                    id="icon"
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M63.5844 45.2007L43.7359 11.2699C41.7433 7.81546 38.0292 5.67137 34.0126 5.66667C29.9956 5.66197 26.2803 7.79721 24.2628 11.2701L4.40703 45.2132C2.34812 48.6752 2.30154 53.0132 4.29582 56.5511C6.29176 60.0919 10.029 62.2954 14.0941 62.3285L53.8681 62.3286C57.9754 62.2887 61.7056 60.0919 63.7012 56.5543C65.6945 53.0208 65.6499 48.6924 63.5844 45.2007ZM9.28789 48.0921L29.1584 14.1239C30.1647 12.3917 32.0103 11.331 34.006 11.3333C36.0015 11.3357 37.8464 12.4007 38.836 14.1163L58.7001 48.0739C59.7414 49.834 59.7637 52.001 58.7657 53.7701C57.7663 55.5417 55.8979 56.642 53.8404 56.6621L14.1172 56.6619C12.1038 56.6454 10.2318 55.5417 9.23223 53.7684C8.23376 51.9971 8.25708 49.8254 9.28789 48.0921ZM34.0009 50.9953C35.5663 50.9953 36.8352 49.7268 36.8352 48.162C36.8352 46.5972 35.5663 45.3286 34.0009 45.3286C32.4356 45.3286 31.1667 46.5972 31.1667 48.162C31.1667 49.7268 32.4356 50.9953 34.0009 50.9953ZM36.8436 22.662H31.175V42.4953H36.8436V22.662Z"
-                    fill="black"
-                  />
-                </g>
-              </svg>
-              <h3>Limitations</h3>
-            </div>
-            <div id="info">
-              <h4>“Highlight the most crucial clauses in the documents”</h4>
-            </div>
-            <div id="info">
-              <h4>“Highlight the most crucial clauses in the documents”</h4>
-            </div>
-            <div id="info">
-              <h4>“Highlight the most crucial clauses in the documents”</h4>
-            </div>
-          </div>
-        </div>
+              </svg> 
+              </span>
+            
+              <div class="flex-item-1-item-1">
+                   <iframe src="../uploads/1695011156018-akashresume.pdf" frameborder="0"></iframe>
+              </div>
         <div class="flex-item-1-item-2">
           <div>
-            <input id="input_file" type="file" style="display: none;">
+            <form action="/doc/upload" method="POST" enctype="multipart/form-data">
+            <input name="userdocument" id="input_file" type="file" style="display: none;">
+            <div>
+              <button type="submit" class="btn-0" id="open_file_button">
+                <svg width="42" height="42" viewBox="0 0 69 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="69" height="62" rx="21" fill="#D9D9D9"/>
+                  <path fill-rule="evenodd" clip-rule="evenodd" d="M56.9167 20.5833C56.9167 18.2821 55.0512 16.4167 52.75 16.4167H34.0037C34.0873 16.4162 34.0608 16.3839 33.8776 16.1611L33.8775 16.1611L33.8771 16.1606C33.8322 16.1059 33.7779 16.0399 33.7135 15.96C33.6496 15.8809 33.4709 15.6506 33.3137 15.448C33.2023 15.3044 33.1017 15.1747 33.0604 15.1226C31.5686 13.2405 30.0833 12.25 27.75 12.25H15.25C12.9488 12.25 11.0833 14.1155 11.0833 16.4167V45.5833C11.0833 47.8845 12.9488 49.75 15.25 49.75H38.1667V45.5833H15.25V28.9167H52.75V37.25H56.9167V20.5833ZM52.75 24.75V20.5833L33.9888 20.5833C32.4927 20.5753 31.5181 19.8748 30.4705 18.5761C30.3756 18.4585 30.1449 18.1611 29.9774 17.9453L29.9774 17.9452L29.977 17.9447C29.8896 17.832 29.8195 17.7416 29.795 17.7107C29.0146 16.7262 28.5505 16.4167 27.75 16.4167H15.25V24.75H52.75ZM44.4167 49.75V45.5833H48.5833V41.4167H52.75V45.5833H56.9167V49.75H52.75V53.9167H48.5833V49.75H44.4167Z" fill="black"/>
+                  </svg>
+                  
+              </button>
+            </div>
+          </form>
           </div>
-          <div>
-            <button class="btn-0" id="open_file_button">
-              <svg width="42" height="42" viewBox="0 0 69 62" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="69" height="62" rx="21" fill="#D9D9D9"/>
-                <path fill-rule="evenodd" clip-rule="evenodd" d="M56.9167 20.5833C56.9167 18.2821 55.0512 16.4167 52.75 16.4167H34.0037C34.0873 16.4162 34.0608 16.3839 33.8776 16.1611L33.8775 16.1611L33.8771 16.1606C33.8322 16.1059 33.7779 16.0399 33.7135 15.96C33.6496 15.8809 33.4709 15.6506 33.3137 15.448C33.2023 15.3044 33.1017 15.1747 33.0604 15.1226C31.5686 13.2405 30.0833 12.25 27.75 12.25H15.25C12.9488 12.25 11.0833 14.1155 11.0833 16.4167V45.5833C11.0833 47.8845 12.9488 49.75 15.25 49.75H38.1667V45.5833H15.25V28.9167H52.75V37.25H56.9167V20.5833ZM52.75 24.75V20.5833L33.9888 20.5833C32.4927 20.5753 31.5181 19.8748 30.4705 18.5761C30.3756 18.4585 30.1449 18.1611 29.9774 17.9453L29.9774 17.9452L29.977 17.9447C29.8896 17.832 29.8195 17.7416 29.795 17.7107C29.0146 16.7262 28.5505 16.4167 27.75 16.4167H15.25V24.75H52.75ZM44.4167 49.75V45.5833H48.5833V41.4167H52.75V45.5833H56.9167V49.75H52.75V53.9167H48.5833V49.75H44.4167Z" fill="black"/>
-                </svg>
-                
-            </button>
-          </div>
+          
           <div>
             <textarea name="" id="" cols="80" rows="3" placeholder="">
             </textarea>
@@ -379,5 +265,6 @@
       </div>
     </div>
 
+    <script defer src="/js/script.js"></script>
   </body>
 </html>

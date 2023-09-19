@@ -135,8 +135,7 @@ body {
 }
 .flex-item-1-item-0 span{
   display: none;
-  float: left;
-  margin-left: 1.7rem;
+  
 }
 .flex-item-1-item-0 h1 {
   font-family: apple-font-heavy;
@@ -221,7 +220,7 @@ textarea {
   }
 
   #info {
-    width: 40vw;
+    width: 60vw;
     height: 11vh;
     background-color: #d9d9d9;
     padding: 0.6rem;
@@ -257,22 +256,34 @@ textarea {
     height: 10vh;
   }
   
-  .flex-item-1-item-0 span{
+  .flex-item-1-item-0 .float-left{
     display: inline;
     float: left;
-    margin-left: 1.7rem;
+    margin-left: 2rem;
+  }
+  .flex-item-1-item-0 .float-right{
+    display: inline;
+    float: right;
+    margin-right: 2rem;
   }
   .flex-item-1-item-0 {
     width: 100vw;
+    height: 10vh;
+  }
+  .flex-item-1-item-0 h1{
+    padding-top: 1rem;
   }
   .flex-item-1-item-1 {
     width: 100vw;
+    height: 70vh;
   }
   .flex-item-1-item-2 {
     width: 100vw;
+    height: 20vh;
+    padding: 1rem 1rem 1rem 1rem;
   }
   #info {
-    width: 60vw;
+    width: 80vw;
     height: 11vh;
     background-color: #d9d9d9;
     padding: 0.6rem;
@@ -284,20 +295,20 @@ textarea {
     display: block;
     position: fixed;
     z-index: 1;
-    width: 50vw;
+    width: 80vw;
     height: 100vh;
   }
   .main-flex-item-0{
-    width: 50vw;
+    width: 80vw;
     height: 100vh;
   }
   .flex-item-0-item-0{
-    width: 50vw;
+    width: 80vw;
   }
   .flex-item-0-item-1{
-    width: 50vw;
+    width: 80vw;
   }
   .flex-item-0-item-2{
-    width: 50vw;
+    width: 80vw;
   }
 }

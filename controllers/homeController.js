@@ -12,6 +12,16 @@ class home {
         );
         res.render(filePath);
     };
+    static conversation = (req, res) => {
+        const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+        const filePath = path.join(
+            __dirname,
+            '..',
+            'views',
+            'conversation.ejs'
+        );
+        res.render(filePath);
+    };
 }
 
 export default home;
