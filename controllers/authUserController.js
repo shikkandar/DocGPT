@@ -3,7 +3,6 @@ import url from 'url';
 import passwordHash from '../misc/hash.js';
 
 import User from '../model/User.js';
-import { type } from 'os';
 
 class authUser {
     static signin = async (req, res) => {

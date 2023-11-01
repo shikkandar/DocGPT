@@ -163,9 +163,10 @@ body {
 .flex-item-1-item-2 .btn-0 {
   margin-right: 20px;
 }
-.flex-item-1-item-2 .btn-1 {
-  margin-left: -50px;
+.textarea-and-button-container{
+  display: inline-block;
 }
+
 textarea {
   width: 90%;
   border: none;
@@ -173,13 +174,7 @@ textarea {
   font-family: apple-font-light;
   overflow: none;
 }
-::placeholder {
-  top: 10px;
-  left: 10px;
-  padding: 30px;
-  font-family: apple-font-heavy;
-  vertical-align: bottom;
-}
+
 #content {
   display: flex;
   flex-direction: column;
@@ -200,7 +195,8 @@ textarea {
 textarea {
   border-radius: 5px;
   background-color: #d9d9d9;
-  opacity: 0.4;
+  padding: 1rem;
+  
 }
 .flex-item-1-item-2 button {
   box-shadow: 0px 0px 0px transparent;
@@ -212,10 +208,11 @@ textarea {
   /* CSS rules for tablet layout */
   .flex-item-1-item-1 {
     overflow-y: scroll;
+    scroll-behavior: smooth;
     scrollbar-width: none;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content:start;
     align-items: center;
   }
 
@@ -282,6 +279,10 @@ textarea {
     height: 20vh;
     padding: 1rem 1rem 1rem 1rem;
   }
+  textarea{
+    width: 80%;
+  }
+  
   #info {
     width: 80vw;
     height: 11vh;

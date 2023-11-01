@@ -8,7 +8,7 @@
   </head>
   <body>
     <div class="main-container">
-      <div class="main-flex-item-0 showSideBar" id="menu">
+      <div class="main-flex-item-0" id="menu">
         <div class="flex-item-0-item-0">
           <div>
             <a href="">
@@ -200,7 +200,7 @@
       <div class="main-flex-item-1">
         <div class="flex-item-1-item-0">
           <h1>
-            <span onclick="showAndCloseSideBar()"
+            <span class="float-left" onclick="showAndCloseSideBar()"
               ><svg
                 width="24"
                 height="24"
@@ -217,54 +217,80 @@
                     fill="black"
                   />
                 </g>
-              </svg> 
-              </span>
-            
-              <div class="flex-item-1-item-1">
-                   <iframe src="../uploads/1695011156018-akashresume.pdf" frameborder="0"></iframe>
-              </div>
-        <div class="flex-item-1-item-2">
-          <div>
-            <form action="/doc/upload" method="POST" enctype="multipart/form-data">
-            <input name="userdocument" id="input_file" type="file" style="display: none;">
-            <div>
-              <button type="submit" class="btn-0" id="open_file_button">
-                <svg width="42" height="42" viewBox="0 0 69 62" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="69" height="62" rx="21" fill="#D9D9D9"/>
-                  <path fill-rule="evenodd" clip-rule="evenodd" d="M56.9167 20.5833C56.9167 18.2821 55.0512 16.4167 52.75 16.4167H34.0037C34.0873 16.4162 34.0608 16.3839 33.8776 16.1611L33.8775 16.1611L33.8771 16.1606C33.8322 16.1059 33.7779 16.0399 33.7135 15.96C33.6496 15.8809 33.4709 15.6506 33.3137 15.448C33.2023 15.3044 33.1017 15.1747 33.0604 15.1226C31.5686 13.2405 30.0833 12.25 27.75 12.25H15.25C12.9488 12.25 11.0833 14.1155 11.0833 16.4167V45.5833C11.0833 47.8845 12.9488 49.75 15.25 49.75H38.1667V45.5833H15.25V28.9167H52.75V37.25H56.9167V20.5833ZM52.75 24.75V20.5833L33.9888 20.5833C32.4927 20.5753 31.5181 19.8748 30.4705 18.5761C30.3756 18.4585 30.1449 18.1611 29.9774 17.9453L29.9774 17.9452L29.977 17.9447C29.8896 17.832 29.8195 17.7416 29.795 17.7107C29.0146 16.7262 28.5505 16.4167 27.75 16.4167H15.25V24.75H52.75ZM44.4167 49.75V45.5833H48.5833V41.4167H52.75V45.5833H56.9167V49.75H52.75V53.9167H48.5833V49.75H44.4167Z" fill="black"/>
-                  </svg>
-                  
-              </button>
-            </div>
-          </form>
-          </div>
-          
-          <div>
-            <textarea name="" id="" cols="80" rows="3" placeholder="">
-            </textarea>
-          </div>
-          <div>
-            <button class="btn-1">
+              </svg> </span
+            >DocGPT
+            <span class="float-right">
               <svg
-                width="30"
-                height="30"
-                viewBox="0 0 38 36"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
               >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M37.643 17.7144L-6.28399e-06 0L6.64288 17.7144L-6.28399e-06 35.4287L37.643 17.7144ZM6.59365 28L10.4508 17.7144L6.59365 7.42873L28.4506 17.7144L6.59365 28Z"
-                  fill="black"
-                />
+                <g id="24 / basic / plus">
+                  <path
+                    id="icon"
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M13 11H22V13H13V22H11V13H2V11H11V2H13V11Z"
+                    fill="black"
+                  />
+                </g>
               </svg>
+            </span>
+          </h1>
+        </div>
+              <div class="flex-item-1-item-1" id="chat_box">
+                   <div class="doc">
+                    <object data="/doc/uploads/<%= data %>" type="" width="480px" height="800px"></object>
+                   </div>
+                       
+              </div>
+        <div class="flex-item-1-item-2">
+          <div>
+            <form id="form_data" action="/doc/upload" method="post" enctype="multipart/form-data">
+              <input name="userdocument" id="input_file" type="file" style="display: none;">
+              
+            </form>
+            <button type="submit" class="btn-0" id="open_file_button">
+              <svg width="42" height="42" viewBox="0 0 69 62" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect width="69" height="62" rx="21" fill="#D9D9D9"/>
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M56.9167 20.5833C56.9167 18.2821 55.0512 16.4167 52.75 16.4167H34.0037C34.0873 16.4162 34.0608 16.3839 33.8776 16.1611L33.8775 16.1611L33.8771 16.1606C33.8322 16.1059 33.7779 16.0399 33.7135 15.96C33.6496 15.8809 33.4709 15.6506 33.3137 15.448C33.2023 15.3044 33.1017 15.1747 33.0604 15.1226C31.5686 13.2405 30.0833 12.25 27.75 12.25H15.25C12.9488 12.25 11.0833 14.1155 11.0833 16.4167V45.5833C11.0833 47.8845 12.9488 49.75 15.25 49.75H38.1667V45.5833H15.25V28.9167H52.75V37.25H56.9167V20.5833ZM52.75 24.75V20.5833L33.9888 20.5833C32.4927 20.5753 31.5181 19.8748 30.4705 18.5761C30.3756 18.4585 30.1449 18.1611 29.9774 17.9453L29.9774 17.9452L29.977 17.9447C29.8896 17.832 29.8195 17.7416 29.795 17.7107C29.0146 16.7262 28.5505 16.4167 27.75 16.4167H15.25V24.75H52.75ZM44.4167 49.75V45.5833H48.5833V41.4167H52.75V45.5833H56.9167V49.75H52.75V53.9167H48.5833V49.75H44.4167Z" fill="black"/>
+                </svg>
+                
             </button>
+            
           </div>
+          
+          <div class="text-and-button-container">
+            <form >
+              <!-- action="/home/chat" method="post" -->
+              <textarea name="usermessage" id="usermessage" cols="80" rows="1" placeholder="">
+              </textarea>
+              <sup><button id="messageForm"  type="button" class="btn-1">
+                <svg
+                  width="30"
+                  height="30"
+                  viewBox="0 0 38 36"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M37.643 17.7144L-6.28399e-06 0L6.64288 17.7144L-6.28399e-06 35.4287L37.643 17.7144ZM6.59365 28L10.4508 17.7144L6.59365 7.42873L28.4506 17.7144L6.59365 28Z"
+                    fill="black"
+                  />
+                </svg>
+              </button></sup>
+            </form>
+          </div>
+          
         </div>
       </div>
     </div>
 
     <script defer src="/js/script.js"></script>
+    <script defer src="/js/chatappender.js"></script>
   </body>
 </html>

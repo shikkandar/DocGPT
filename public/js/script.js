@@ -10,46 +10,59 @@ function emailClick() {
 
 const openFileButton = document.getElementById('open_file_button');
 const fileInput = document.getElementById('input_file');
+const formSubmit = document.getElementById('form_data');
+const indexTextArea = document.getElementById('indexTextarea');
 
+console.log(fileInput);
 openFileButton.addEventListener('click', () => {
     fileInput.click();
 });
 let pdfFile;
 fileInput.addEventListener('change', (event) => {
+    console.log("I am changed");
     pdfFile = event.target.files[0];
     console.log(pdfFile);
-    uploadPDF();
+    formSubmit.submit();
+    console.log("upload successfull");
 });
 
-async function uploadPDF() {
-    if (!pdfFile) {
-        alert('Please select a PDF file to upload.');
-        return;
-    }
+indexTextArea.addEventListener('change', ()=>{
+    window.alert('Please feed your document before sending messages');
+    indexTextArea.value = '';
+});
 
-    const formData = new FormData();
-    formData.append('pdfFile', pdfFile);
 
-    try {
-        const response = await fetch('/doc/upload', {
-            method: 'POST',
-            mode: 'cors',
-            cache: 'no-cache',
-            credentials: 'same-origin',
-            body: formData,
-        });
 
-        if (response.ok) {
-            const result = await response.json();
-            console.log('Upload successful:', result);
-        } else {
-            console.error(
-                'Upload failed:',
-                response.status,
-                response.statusText
-            );
-        }
-    } catch (error) {
-        console.error('Error uploading PDF:', error);
-    }
-}
+// async function uploadPDF() {
+//     if (!pdfFile) {
+//         alert('Please select a PDF file to upload.');
+//         return;
+//     }
+
+//     const formData = new FormData();
+//     formData.append('pdfFile', pdfFile);
+//     console.log(formData);
+//     try {
+//         const response = await fetch('/upload', {
+//             method: 'POST',
+//             mode: 'cors',
+//             cache: 'no-cache',
+//             credentials: 'same-origin',
+//             body: formData,
+//         });
+
+//         if (response.ok) {
+//             const result = await response.json();
+//             console.log('Upload successful:', result);
+//         } else {
+//             console.error(
+//                 'Upload failed:',
+//                 response.status,
+//                 response.statusText
+//             );
+//         }
+//         console.log("I am done uploading");
+//     } catch (error) {
+//         console.error('Error uploading PDF:', error);
+//     }
+// }
