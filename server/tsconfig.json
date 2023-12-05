@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+      "module": "NodeNext",
+      "outDir": "dist",
+      "types": ["whatwg-url"],
+      "target": "ES2022",
+      "sourceMap": true
+    },
+    "include": ["src/**/*"],
+    "exclude": ["**/*.spec.ts"]
+  }
