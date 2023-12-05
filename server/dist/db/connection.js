@@ -1,7 +1,8 @@
 import { connect, disconnect } from "mongoose";
+const MONGODB_URI = process.env.MONGODB_CONNECTION_URI;
 const connectToDatabase = async () => {
     try {
-        await connect('mongodb+srv://AkashSah:HOffsZngsRNxGEzD@cluster0.8kbrh5z.mongodb.net/?retryWrites=true&w=majority/user');
+        await connect(MONGODB_URI);
     }
     catch (error) {
         throw new Error('MongoDB connection failed');
