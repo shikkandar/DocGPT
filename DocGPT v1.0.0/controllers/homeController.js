@@ -5,20 +5,20 @@ import { docData } from './uploadFileController.js';
 
 class home {
     static home = (req, res) => {
-        // const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
-        // const filePath = path.join(
-        //     __dirname,
-        //     '..',
-        //     'views',
-        //     'index.ejs'
-        // );
-        // res.render(filePath);
-        try{
-            throw new Error("Something went wrong");
-        }
-        catch(e){
-            console.log('Error: ', e);
-        }
+        const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
+        const filePath = path.join(
+            __dirname,
+            '..',
+            'views',
+            'index.ejs'
+        );
+        res.render(filePath);
+        // try{
+        //     throw new Error("Something went wrong");
+        // }
+        // catch(e){
+        //     console.log('Error: ', e);
+        // }
         
     };
     static conversation = (req, res) => {

@@ -35,7 +35,7 @@ app.use(bodyParser.json());
 app.use('/home', homeRoutes);
 app.use('/auth', authRoutes);
 app.use('/doc', uploadRoutes);
-app.get('/*', notFound);
+// app.get('/*', notFound);
 
 
 app.listen('3000', () => {
