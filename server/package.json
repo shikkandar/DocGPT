@@ -18,9 +18,11 @@
     "openai": "^4.20.1"
   },
   "devDependencies": {
-    "@types/whatwg-url": "^11.0.3"
+    "@types/whatwg-url": "^11.0.3",
+    "prettier": "^3.1.0"
   },
   "scripts": {
+    "format": "prettier --write \"src/**/*.js\"",
     "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\" ",
     "build": "tsc",
     "start": "node dist/indes.js"

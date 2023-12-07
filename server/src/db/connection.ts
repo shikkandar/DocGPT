@@ -19,4 +19,4 @@ const disconnectToDatabase = async () => {
     }
 }
 
-export {connectToDatabase, disconnectToDatabase}
+export {connectToDatabase, disconnectToDatabase};
