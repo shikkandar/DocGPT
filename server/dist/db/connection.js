@@ -3,11 +3,11 @@ const MONGODB_URI = process.env.MONGODB_CONNECTION_URI;
 const connectToDatabase = async () => {
     try {
         await connect(MONGODB_URI, {
-            dbName: 'user',
+            dbName: "user",
         });
     }
     catch (error) {
-        throw new Error('MongoDB connection failed');
+        throw new Error("MongoDB connection failed");
     }
 };
 const disconnectToDatabase = async () => {
@@ -15,7 +15,7 @@ const disconnectToDatabase = async () => {
         await disconnect();
     }
     catch (error) {
-        throw new Error('MongoDB disconnected');
+        throw new Error("MongoDB disconnected");
     }
 };
 export { connectToDatabase, disconnectToDatabase };

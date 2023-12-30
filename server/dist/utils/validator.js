@@ -1,10 +1,14 @@
 import { body, validationResult } from "express-validator";
-const validator = [
+const signupValidator = [
     body("name").notEmpty().trim().withMessage("Invalid Name"),
     body("email").isEmail().withMessage("Invalid Email"),
     body("password").isLength({ min: 6 }).withMessage("Invalid Password"),
 ];
-const validateSignUp = (validator) => {
+const loginValidator = [
+    body("email").isEmail().withMessage("Invalid Email"),
+    body("password").isLength({ min: 6 }).withMessage("Invalid Password"),
+];
+const validator = (validator) => {
     return async (req, res, next) => {
         for (let validations of validator) {
             const result = await validations.run(req);
@@ -18,5 +22,5 @@ const validateSignUp = (validator) => {
         res.status(400).json({ errors: errors.array() });
     };
 };
-export { validator, validateSignUp };
+export { loginValidator, signupValidator, validator };
 //# sourceMappingURL=validator.js.map
