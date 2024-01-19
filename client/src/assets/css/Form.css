@@ -1,17 +1,17 @@
 /* Using San Fransisco Font */
 @font-face {
     font-family: apple-font-heavy;
-    src: url(../assets/fonts/SanFrancisco/pro/SF-Pro-Display-Heavy.otf);
+    src: url(../../../src/assets/fonts/SanFrancisco/pro/SF-Pro-Display-Heavy.otf);
   }
   
   @font-face {
     font-family: apple-font-medium;
-    src: url(../assets/fonts/SanFrancisco/SFUIText/SFUIText-Medium.otf);
+    src: url(../../../src/assets/fonts/SanFrancisco/SFUIText/SFUIText-Medium.otf);
   }
   
   @font-face {
     font-family: apple-font-light;
-    src: url(./assests/fonts/SanFrancisco/SFUIText/SFUIText-Light.otf);
+    src: url(../../../src/assets/fonts/SanFrancisco/SFUIText/SFUIText-Light.otf);
   }
   
   /* Defining global variables */

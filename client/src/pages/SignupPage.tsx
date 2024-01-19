@@ -1,8 +1,8 @@
-import React from 'react';
 import Input from '../components/Input';
 import Button from '../components/Button';
+import '../../src/assets/css/Form.css'
 
-const Signup = () => {
+const SignupPage = () => {
     return (
         <div className="container">
             <div className="flex-item-1">
@@ -14,7 +14,7 @@ const Signup = () => {
                     </h4>
                     <form method="post" action="">
                         <li>
-                            <Input name="username" type="text" label='Username'/>
+                            <Input name="username" type="text" label='Username' />
                         </li>
                         <li>
                             <Input name="email" type="email" label='Email' />
@@ -43,4 +43,4 @@ const Signup = () => {
     );
 };
 
-export default Signup;
+export default SignupPage;

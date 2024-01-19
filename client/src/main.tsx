@@ -1,14 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import App from './App.tsx'
-import './index.css'
+import { Toaster } from 'react-hot-toast'
+import axios from 'axios';
 
-import { BrowserRouter, BrowserRouter as Router } from 'react-router-dom'
+axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.withCredentials = true;
+
+import { BrowserRouter as Router } from 'react-router-dom'
+import { AuthProvider } from './contexts/AuthContext.tsx'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-   <Router>
-   <App />
-   </Router>
+    <AuthProvider>
+      <Router>
+        <Toaster />
+        <App />
+      </Router>
+    </AuthProvider>
   </React.StrictMode>,
 )

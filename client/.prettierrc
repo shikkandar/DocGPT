@@ -1,25 +1,13 @@
 {
-    "semi": true,
-    "singleQuote": true,
-    "tabWidth": 4,
-    "arrowParens": "always",
-    "printWidth": 70,
-    "overrides": [
-      {
-        "files": "*.tsx",
-        "options": {
-          "parser": "babel"
-        }
-      },
-      {
-        "files": "*.ts",
-        "options": {
-          "parser": "typescript"
-        }
-      }
-    ],
-    "rules": {
-      "function-parameter": "multiline"
-    }
-  }
-  
+  "semi": true,
+  "bracketSpacing": true,
+  "arrowParens": "always",
+  "endOfLine": "lf",
+  "jsxSingleQuote": true,
+  "printWidth": 140,
+  "tabWidth": 2,
+  "quoteProps": "consistent",
+  "singleQuote": true,
+  "trailingComma": "all",
+  "useTabs": true
+}

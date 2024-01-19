@@ -9,7 +9,7 @@ class userController {
                 return res.status(401).json({ error: "Unauthorized", message: "Invalid email or password." });
             }
             if (user.password == password) {
-                return res.status(200).json({ success: "Success", message: "Login successful." });
+                return res.status(200).json({ success: "Success", name: user.name, email: user.email });
             }
             else {
                 return res.status(403).json({ error: "Forbidden", message: "Incorrect password." });
@@ -42,7 +42,31 @@ class userController {
         catch (error) {
             // Handle any unexpected errors
             console.error("Error during user registration:", error);
-            // Check for specific error types (e.g., validation errors)
+            // Check for specific error types e.g(., validation errors)
+            if (error.name === 'ValidationError') {
+                return res.status(400).json({ error: "Bad Request", message: error.message });
+            }
+            return res.status(500).json({ error: "Internal Server Error", message: "Something went wrong." });
+        }
+    };
+    static authenticateUser = async (req, res, next) => {
+        try {
+            // Check if the email already exists
+            const user = await User.findOne({ email: res.locals.jwtData.email });
+            if (!user) {
+                return res.status(401).json({ error: "Bad Request", message: "User not registered" });
+            }
+            if (user.email !== res.locals.jwtData.email) {
+                res.status(401).json({ message: 'Permission Denied' });
+            }
+            return res
+                .status(201)
+                .json({ message: "OK", name: user.name, email: user.email });
+        }
+        catch (error) {
+            // Handle any unexpected errors
+            console.error("Error during user token verification :", error);
+            // Check for specific error types e.g(., validation errors)
             if (error.name === 'ValidationError') {
                 return res.status(400).json({ error: "Bad Request", message: error.message });
             }
@@ -50,5 +74,6 @@ class userController {
         }
     };
 }
+;
 export default userController;
 //# sourceMappingURL=user-controller.js.map
