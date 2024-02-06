@@ -5,10 +5,11 @@ import { verifyToken } from "../utils/token-manager.js";
 import upload from "../utils/file-storage.js";
 import uploadMiddleware from "../utils/cloudinary.js";
 import { getUserFromToken } from "../utils/user-decoder.js";
+import { pdfDataExtractor } from "../utils/python-communicator.js";
 const appRouter = Router();
 appRouter.post("/signup", validator(signupValidator), userController.signupUser);
 appRouter.post("/login", validator(loginValidator), userController.loginUser);
 appRouter.get("/check-auth", verifyToken, userController.authenticateUser);
-appRouter.post("/upload", getUserFromToken, upload.single('document'), uploadMiddleware, userController.uploadFile);
+appRouter.post("/upload", getUserFromToken, upload.single('document'), uploadMiddleware, pdfDataExtractor, userController.uploadFile);
 export default appRouter;
 //# sourceMappingURL=user-routes.js.map

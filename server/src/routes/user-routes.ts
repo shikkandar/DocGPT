@@ -9,6 +9,7 @@ import { verifyToken } from "../utils/token-manager.js";
 import upload from "../utils/file-storage.js";
 import uploadMiddleware from "../utils/cloudinary.js";
 import { getUserFromToken } from "../utils/user-decoder.js";
+import { pdfDataExtractor } from "../utils/python-communicator.js";
 
 const appRouter = Router();
 
@@ -32,6 +33,7 @@ appRouter.post(
    getUserFromToken,
    upload.single('document'),
    uploadMiddleware,
+   pdfDataExtractor,
    userController.uploadFile
 )
 

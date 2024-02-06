@@ -13,18 +13,12 @@ const ChatHistorySchema = new mongoose.Schema({
     },
     conversation: [
         {
-            _id: false,
-            sender: {
+            role: {
                 type: String,
-                enum: ["user", "model"],
-                message: {
-                    type: String,
-                },
-                timestamp: {
-                    type: Date,
-                    default: Date.now,
-                },
             },
+            content: {
+                type: String,
+            }
         },
     ],
 });

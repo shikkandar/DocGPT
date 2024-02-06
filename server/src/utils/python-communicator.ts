@@ -1,22 +1,49 @@
-const { spawn } = require("child_process");
-const path = require("path");
+import { Request, Response, NextFunction } from "express";
+import ChatHistory from "../models/ChatHistory.js";
 
-export const pdfDataExtractor = () => {
-  const pythonProcess = spawn("python", [path.resolve(__dirname, "../../pythons-scripts/pdfparser.py")]);
+import { spawn } from "child_process";
+import { fileURLToPath } from 'url';
+import path from 'path';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+export const pdfDataExtractor = (
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) => {
+  const pythonProcess = spawn("python", [
+    path.resolve(__dirname, "../../pythons-scripts/pdfparser.py"),
+  ]);
 
   let pythonOutput = Buffer.from([]);
-  
+
   pythonProcess.stdout.on("data", (data) => {
     pythonOutput = Buffer.concat([pythonOutput, data]);
   });
-  
+
   pythonProcess.stderr.on("data", (data) => {
     console.error(`Python Error: ${data}`);
   });
-  
-  pythonProcess.on("close", (code) => {
+
+  pythonProcess.on("close", async (code) => {
     const decodedOutput = pythonOutput.toString("utf-8");
-    return decodedOutput;
-    
+
+    const conversationData = {
+      role: "user",
+      content: decodedOutput,
+    };
+    try {
+      const userChatHistory = await ChatHistory.findByIdAndUpdate(
+        { _id: req.locals },
+        { $push: { conversation: conversationData } },
+        { new: true },
+      );
+      console.log(userChatHistory);
+      return decodedOutput;
+    } catch (error) {
+      console.error("Error updating conversation:", error);
+      return null;
+    }
   });
-}
+};
