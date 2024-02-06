@@ -12,6 +12,7 @@ const app = express();
 
 // Middleware
 app.use(cors({origin:'http://localhost:5173',credentials: true}));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json()); // Parse JSON requests
 app.use(morgan("dev")); // Log HTTP requests
 app.use(cookieParser(process.env.COOKIE_SECRET)); // Parse cookies

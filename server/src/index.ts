@@ -1,5 +1,5 @@
 import app from "./app.js";
-import { connectToDatabase } from "./db/connection.js";
+import { connectToDatabase } from "./config/connectToDatabase.js";
 
 connectToDatabase()
   .then(() => {

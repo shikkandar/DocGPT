@@ -1,8 +1,25 @@
 import Input from '../components/Input';
 import Button from '../components/Button';
 import '../../src/assets/css/Form.css'
+import { useAuth } from '../contexts/AuthContext';
+import { toast } from 'react-hot-toast';
 
 const SignupPage = () => {
+
+    const auth = useAuth();
+    
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        const formData = new FormData(e.currentTarget);
+
+        const name = formData.get('name') as string
+        const email = formData.get('email') as string
+        const password = formData.get('password') as string
+
+        toast.loading("Signing Up", { id: 'signup' });
+        await auth?.signup(name,email,password);
+        toast.loading("Signed Up", { id: 'signup' });
+    }
     return (
         <div className="container">
             <div className="flex-item-1">
@@ -12,17 +29,17 @@ const SignupPage = () => {
                         Join DocGPT and initiate conversation with
                         your documents
                     </h4>
-                    <form method="post" action="">
-                        <li>
-                            <Input name="username" type="text" label='Username' />
-                        </li>
-                        <li>
+                    <form onSubmit={handleSubmit}>
+                        
+                            <Input name='name' type="text" label='Username' />
+                        
+                        
                             <Input name="email" type="email" label='Email' />
-                        </li>
-                        <li>
+                        
+                        
                             <Input name="password" type="password" label='Password' />
-                        </li>
-                        <Button buttonName='Create your account'></Button>
+                        
+                        <Button type='submit' buttonName='Create your account'></Button>
                     </form>
                     <div>
                         <h4>

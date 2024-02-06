@@ -1,4 +1,3 @@
-import React from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import Input from '../components/Input';
 import Button from '../components/Button';
@@ -6,7 +5,9 @@ import { toast } from 'react-hot-toast';
 import '../../src/assets/css/Form.css';
 
 const LoginPage = () => {
+
     const auth = useAuth();
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formdata = new FormData(e.currentTarget);

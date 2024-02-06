@@ -1,22 +1,27 @@
 import { useState, useRef } from "react";
 import { RiFileUploadFill } from "react-icons/ri";
 import { IoMdSend } from "react-icons/io";
+import { uploadUserDocument } from "../../helpers/api-communicator";
 
 const FileInput = () => {
-    const [file, setFile] = useState<File | null>(null); 
+    const [file, setFile] = useState();
     const fileInput = useRef<HTMLInputElement>(null);
-
-    const handleClick = () => {
-        console.log("I am file click");
-        if (fileInput.current) {
-            fileInput.current.click(); // Simulate a click on the file input
-        }
-    };
+    
+    const handleSubmit = async (e) => {
+       e.preventDefault();
+       
+       fileInput.current.click()
+          
+       if(file){
+          
+          await uploadUserDocument(file);
+       }
+    }
 
     return (
         <>
             <div>
-                <form>
+                <form encType="multipart/form-data">
                     {/* Attach the ref to the file input */}
                     <input
                         type="file"
@@ -29,7 +34,7 @@ const FileInput = () => {
                         ref={fileInput}
                     />
                 </form>
-                <button type="button" className="btn-0" onClick={handleClick}>
+                <button type="button" className="btn-0" onClick={handleSubmit}>
                     <RiFileUploadFill style={{ width: '32px', height: '32px' }} />
                 </button>
             </div>

@@ -1,0 +1,32 @@
+import { v2 as cloudinary } from "cloudinary";
+import ChatHistory from "../models/ChatHistory.js";
+// Cloudinary configuration
+//TODO: need to put it into env file
+cloudinary.config({
+    cloud_name: "dmyjhicsl",
+    api_key: "822545885516375",
+    api_secret: "bY84kME2oPJzpdFlBvSJJ2cYCfk",
+});
+// Cloudinary upload function
+const uploadFileOnCloudinary = async (req, res, filePath) => {
+    try {
+        cloudinary.uploader.upload(filePath, { public_id: "olympic_flag", resource_type: "raw" }, async function (error, result) {
+            const userChatHistory = new ChatHistory({ userId: req.locals.id });
+            await userChatHistory.save();
+            const pdfURL = result.url;
+            const response = await ChatHistory.findByIdAndUpdate({ _id: userChatHistory._id.toString() }, { pdfUrl: result.url }, { new: true });
+            res.status(200).json(response);
+        });
+    }
+    catch (error) {
+        console.error(error);
+    }
+};
+// Multer middleware to handle file upload
+const uploadMiddleware = (req, res, next) => {
+    const filePath = req.file.path;
+    uploadFileOnCloudinary(req, res, filePath);
+    next();
+};
+export default uploadMiddleware;
+//# sourceMappingURL=cloudinary.js.map
