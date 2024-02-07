@@ -11,6 +11,7 @@ export const loginUser = async (email: string, password: string) => {
     console.log(res.data);
     return data;
 }
+
 export const signUpUser = async (username: string, email: string, password: string) => {
     console.log(username);
     const res = await axios.post('/signup', { username, email, password });
@@ -22,6 +23,7 @@ export const signUpUser = async (username: string, email: string, password: stri
     console.log(res.data);
     return data;
 }
+
 export const authenticateUser = async () => {
     const res = await axios.get('/check-auth');
     if (res.status !== 200) {
@@ -33,6 +35,7 @@ export const authenticateUser = async () => {
     return data;
 
 }
+
 export const uploadUserDocument = async (file) => {
     const formData = new FormData()
     formData.append('document', file);
@@ -40,4 +43,12 @@ export const uploadUserDocument = async (file) => {
         withCredentials: true,
     })
     console.log(res);
+}
+
+export const sendUserMessage = async (message: string) => {
+    const formData = new FormData();
+    formData.append('message', message);
+    const res = await axios.post('/chat', formData);
+    console.log(res);
+
 }
