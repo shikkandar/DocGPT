@@ -22,6 +22,6 @@ const ChatHistorySchema = new mongoose.Schema({
      }
     },
   ],
-});
+})
 
 export default mongoose.model("ChatHistory", ChatHistorySchema);

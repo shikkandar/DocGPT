@@ -1,11 +1,11 @@
-import Configuration from 'openai';
-const configParameter = {
-    apiKey: process.env.OPEN_AI_API_KEY,
-    organization: process.env.ORG_ID
-};
 const configureOpenAI = () => {
-    const config = new Configuration(configParameter);
-    return config;
+    const apiKey = process.env.OPEN_AI_API_KEY;
+    const organization = process.env.ORG_ID;
+    const configParameters = {
+        apiKey,
+        organization
+    };
+    return configParameters;
 };
 export default configureOpenAI;
 //# sourceMappingURL=openai-config.js.map

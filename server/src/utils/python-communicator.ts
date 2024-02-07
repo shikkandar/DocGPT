@@ -40,7 +40,7 @@ export const pdfDataExtractor = (
         { new: true },
       );
       console.log(userChatHistory);
-      return decodedOutput;
+      res.status(200).json({message:'OK'});
     } catch (error) {
       console.error("Error updating conversation:", error);
       return null;

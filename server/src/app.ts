@@ -7,6 +7,7 @@ import dotenv from "dotenv";
 
 dotenv.config();
 import userRoutes from "./routes/user-routes.js";
+import chatRoutes from "./routes/chat-routes.js";
 
 const app = express();
 
@@ -19,5 +20,6 @@ app.use(cookieParser(process.env.COOKIE_SECRET)); // Parse cookies
 
 // Routes
 app.use("/", userRoutes);
+app.use('/chat', chatRoutes)
 
 export default app;

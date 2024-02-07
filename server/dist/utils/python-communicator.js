@@ -23,7 +23,7 @@ export const pdfDataExtractor = (req, res, next) => {
         try {
             const userChatHistory = await ChatHistory.findByIdAndUpdate({ _id: req.locals }, { $push: { conversation: conversationData } }, { new: true });
             console.log(userChatHistory);
-            return decodedOutput;
+            res.status(200).json({ message: 'OK' });
         }
         catch (error) {
             console.error("Error updating conversation:", error);

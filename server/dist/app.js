@@ -6,6 +6,7 @@ import cors from 'cors';
 import dotenv from "dotenv";
 dotenv.config();
 import userRoutes from "./routes/user-routes.js";
+import chatRoutes from "./routes/chat-routes.js";
 const app = express();
 // Middleware
 app.use(cors({ origin: 'http://localhost:5173', credentials: true }));
@@ -15,5 +16,6 @@ app.use(morgan("dev")); // Log HTTP requests
 app.use(cookieParser(process.env.COOKIE_SECRET)); // Parse cookies
 // Routes
 app.use("/", userRoutes);
+app.use('/chat', chatRoutes);
 export default app;
 //# sourceMappingURL=app.js.map
