@@ -22,7 +22,7 @@ const FileInput = () => {
     const handleMessageSubmit = async (e) => {
         e.preventDefault();
         console.log(messageInput.current?.value)
-        await sendUserMessage(messageInput.current?.textContent)
+        await sendUserMessage(messageInput.current?.value)
     }
 
     return (

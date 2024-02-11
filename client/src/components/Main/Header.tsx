@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const { toggleNavbar } = useNavbar();
   return (
-    <div className="flex-item-1-item-0">
+    <div className="docgpt">
       <h1>
         <span className="float-left">
           <MdMenu style={{ width: '28px', height: '28px' }} onClick={toggleNavbar} />

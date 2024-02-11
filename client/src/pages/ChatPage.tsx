@@ -1,13 +1,33 @@
-import '../../src/assets/css/Chat.css';
 import Navbar from '../components/Navbar';
-
 import { NavbarProvider } from '../contexts/NavbarContext';
-import { LuSun } from "react-icons/lu";
-import { AiOutlineThunderbolt } from "react-icons/ai";
-import { CgDanger } from "react-icons/cg";
-import InfoItem from '../components/Main/InfoItem';
 import InputBox from '../components/InputBox';
 import Header from '../components/Main/Header';
+import ChatItem from '../components/chat/ChatItem';
+
+import '../../src/assets/css/Chat.css';
+import PdfViewer from '../components/PdfViewer';
+
+const conversation = [
+  {
+    role: "user",
+    message: "Hi there, I'm looking for a good Italian restaurant in the area.Hi there, I'm looking for a good Italian restaurant in the area."
+  },
+  {
+    role: "assistant",
+    message: "Sure! There are a few great options nearby. Are you looking for something casual or more upscale?"
+  },
+  {
+    role: "user",
+    message: "I'm looking for something a bit upscale, with a nice ambiance for a special occasion."
+  },
+  {
+    role: "assistant",
+    message: "Got it! I recommend trying La Trattoria. It's known for its authentic Italian cuisine and cozy atmosphere."
+  }
+
+]
+
+
 
 const ChatPage = () => {
   return (
@@ -15,14 +35,17 @@ const ChatPage = () => {
       <div className='main-container'>
         <Navbar />
         <div className='main-flex-item-1'>
-        <Header />
-      <div className='flex-item-1-item-1'>
-        <InfoItem sectionClass='Capabilities' icon={<LuSun style={{ width: '32px', height: '32px' }} />} />
-        <InfoItem sectionClass='Limatations' icon={<CgDanger style={{ width: '32px', height: '32px' }} />} />
-        <InfoItem sectionClass='Examples' icon={<AiOutlineThunderbolt style={{ width: '32px', height: '32px' }} />} />
-      </div>
-      <InputBox />
-    </div>
+          <Header />
+          <div className='chat-box'>
+            <PdfViewer />
+            {
+              conversation.map((item, index) => {
+                return <ChatItem message={item.message} role={item.role} key={index} />
+              })
+            }
+          </div>
+          <InputBox />
+        </div>
       </div>
     </NavbarProvider>
   )
