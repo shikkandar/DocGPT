@@ -5,7 +5,22 @@ const ChatHistorySchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "User",
   },
-  pdfUrl: {
+  chatID: {
+    type: String,
+  },
+  asset_id:{
+    type: String,
+  },
+  public_id:{
+    type: String,
+  },
+  pdfUrl:{
+    type: String,
+  },
+  title: {
+    type: String,
+  },
+  pdfSecureUrl: {
     type: String,
   },
   timestamp: {

@@ -1,12 +1,12 @@
 import { Request, Response, NextFunction } from "express";
 import { v2 as cloudinary } from "cloudinary";
-
+import mongoose from "mongoose";
 import ChatHistory from "../models/ChatHistory.js";
 
 // Cloudinary configuration
 //TODO: need to put it into env file
 cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_NAME,
+  cloud_name: process.env.CLOUDINARY_NAME, 
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
@@ -19,35 +19,54 @@ const uploadFileOnCloudinary = async (
   filePath: string,
 ) => {
   try {
+    console.log('The req locals:', req.locals);
     cloudinary.uploader.upload(
       filePath,
-      { public_id: "olympic_flag", resource_type: "raw" },
+      {
+        public_id: `${req.locals.originalName}`,
+        resource_type: "raw",
+        asset_folder: req.locals.id,
+        use_asset_folder_as_public_id_prefix: true,
+      },
       async function (error, result) {
-        const userChatHistory = new ChatHistory({ userId: req.locals.id });
+        if (error) {
+          return next(error);
+        }
+
+        // Create a new instance of ChatHistory with _id field
+        const userChatHistory = new ChatHistory({
+          _id: new mongoose.Types.ObjectId(), // Assin a new ObjectId as _id
+          userId: req.locals.id,
+          chatID: req.params.chatID
+        });
+
         await userChatHistory.save();
-        const pdfURL = result.url;
+
         const response = await ChatHistory.findByIdAndUpdate(
-          { _id: userChatHistory._id.toString() },
-          { pdfUrl: result.url },
+          userChatHistory._id,
+          {
+            asset_id: result.asset_id,
+            public_id: result.public_id,
+            pdfUrl: result.url,
+            pdfSecureUrl: result.secure_url,
+          },
           { new: true },
         );
-        console.log("I am checking pdfparser");
         req.locals = response._id.toString();
-        console.log(req.locals);
-        // res.status(200).json(response);
+        console.log("The cloudinary response is:", result);
         next();
       },
     );
   } catch (error) {
-    console.error(error);
+    console.error("An unexpected error occurred:", error);
+    next(error);
   }
 };
 
 // Multer middleware to handle file upload
 const uploadMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const filePath = req.file.path;
-  uploadFileOnCloudinary(req, res,next, filePath);
-  next();
+  uploadFileOnCloudinary(req, res, next, filePath);
 };
 
 export default uploadMiddleware;

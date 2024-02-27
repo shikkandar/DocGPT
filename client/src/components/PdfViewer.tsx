@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import { Document, Page } from 'react-pdf';
-import pdf from "./Yuna's Resume (2).pdf";
+import { useChat } from '../contexts/ChatContext';
 const PdfViewer = () => {
     const [numPages, setNumPages] = useState<number>();
     const [pageNumber, setPageNumber] = useState<number>(1);
+    const chat = useChat();
 
     function onDocumentLoadSuccess({ numPages }: { numPages: number }): void {
         setNumPages(numPages);
@@ -11,8 +12,8 @@ const PdfViewer = () => {
 
     return (
         <div>
-            <Document file={pdf} onLoadSuccess={onDocumentLoadSuccess}>
-                <Page pageNumber={pageNumber} renderTextLayer = {false} renderAnnotationLayer = {false}/>
+            <Document file={chat.pdfSecureUrl} onLoadSuccess={onDocumentLoadSuccess}>
+                <Page  pageNumber={pageNumber} renderTextLayer = {false} renderAnnotationLayer = {false}/>
             </Document>
             <p>
                 Page {pageNumber} of {numPages}

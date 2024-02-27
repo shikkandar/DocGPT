@@ -1,39 +1,46 @@
-import { MdOutlineMessage } from "react-icons/md";
+import { TiMessage } from "react-icons/ti";
+import { fetchAllChats } from "../../helpers/api-communicator";
+import { useEffect, useState } from "react";
+import { FaExclamationCircle } from "react-icons/fa";
 
-const ChatItem = ({ title }: { title: string }) => {
+const ChatItem = ({ title, chatID }: { title: string, chatID: string }) => {
   return (
     <div>
-      <MdOutlineMessage style={{ width: '22px', height: '22px' }} />
+      <TiMessage style={{ width: '22px', height: '22px' }} />
 
-      <a href=""> {title} </a>
+      <a href={`/chat/${chatID}`} > {title} </a>
     </div>
   )
 }
 
 const ChatHistory = () => {
-  const chatItems = [
-    '1. Software Development',
-    '2. Design & Planning',
-    '3. Project Management',
-    '4. Data Structures and Algorithms',
-    '5. Operating System',
-    '6. Professional Ethincs',
-    '7. Green Computing',
-    '1. Software Development',
-    '2. Design & Planning',
-    '3. Project Management',
-    '4. Data Structures and Algorithms',
-    '5. Operating System',
-    '6. Professional Ethincs',
-    '7. Green Computing'
-  ]
+  const [chatHistoryTitle, setChatHistoryTitle] = useState<object[]>([]);
+  const reversedChatHistoryTitle = chatHistoryTitle.slice().reverse();
+
+  useEffect(() => {
+    fetchAllChats().then((data) => {
+
+      setChatHistoryTitle(data.data.allChat);
+      console.log(chatHistoryTitle);
+    });
+  }, []);
+
   return (
     <div className='flex-item-0-item-1'>
-      {chatItems.map((item: string, index: number) => {
-        return (
-          <ChatItem key={index} title={item} />
-        );
-      })}
+      {reversedChatHistoryTitle.length === 0 ? (
+        <div className="no-chat-history">
+          <p className="icon"><FaExclamationCircle/></p>
+          <p className="message">Initiate chat to see history here</p>
+        </div>
+      ) : (
+        reversedChatHistoryTitle.map((item) => {
+          console.log('It is chatID', item.chatID);
+          console.log('It is title', item.title);
+          return (
+            <ChatItem key={item.chatID} title={item.title} chatID={item.chatID} />
+          );
+        })
+      )}
     </div>
   )
 }

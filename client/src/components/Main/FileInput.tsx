@@ -1,13 +1,18 @@
-import { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { RiFileUploadFill } from "react-icons/ri";
 import { IoMdSend } from "react-icons/io";
 import { uploadUserDocument } from "../../helpers/api-communicator";
 import { sendUserMessage } from "../../helpers/api-communicator";
+import { useChat } from "../../contexts/ChatContext";
+import { generateUniqueID } from "../../helpers/uuid";
+import { useParams } from "react-router";
 
-const FileInput = () => {
+const FileInput: React.FC = () => {
     const [file, setFile] = useState();
     const fileInput = useRef<HTMLInputElement>(null);
     const messageInput = useRef<HTMLTextAreaElement>(null);
+    const chat = useChat();
+    const { chatID } = useParams();
 
     const handleFileSubmit = async (e) => {
         e.preventDefault();
@@ -15,14 +20,21 @@ const FileInput = () => {
         fileInput.current.click()
 
         if (file) {
-
-            await uploadUserDocument(file);
+            await uploadUserDocument(file, chat.chatID);
         }
     }
     const handleMessageSubmit = async (e) => {
         e.preventDefault();
         console.log(messageInput.current?.value)
-        await sendUserMessage(messageInput.current?.value)
+        const message = {
+            role: 'user',
+            content: messageInput.current?.value
+        }
+        console.log(message);
+        chat.pushUserMessagesToConversation(message);
+        const userChat = await sendUserMessage(messageInput.current?.value, chatID)
+        chat.updateUserMessageWithOpenAIResponse(userChat.conversation);
+        chat.updateUserPdfUrl(userChat.pdfSecureUrl);
     }
 
     return (

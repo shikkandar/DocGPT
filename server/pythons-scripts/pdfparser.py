@@ -1,9 +1,11 @@
-from pypdf import PdfReader
-
+import os
 import sys
+from pypdf import PdfReader
+from pdffinder import get_latest_file
 
-pdf_path = "/uploads/Yuna's Resume (2).pdf"
-
+folder_path = "./uploads"
+latest_file = get_latest_file(folder_path)
+pdf_path = os.path.join(folder_path, latest_file)
 with open(pdf_path, "rb") as file:
     pdf_reader = PdfReader(file)
     page = pdf_reader.pages[0]

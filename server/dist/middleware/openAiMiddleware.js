@@ -1,21 +1,22 @@
-import OpenAI from "openai";
-import configureOpenAI from "../config/openai-config.js";
 import ChatHistory from "../models/ChatHistory.js";
-const config = configureOpenAI();
-const openai = new OpenAI(config);
+// const config = configureOpenAI();
+// const openai = new OpenAI(config);
 export const postChatMessageToOpenAI = async (req, res, next) => {
-    const modelResponse = await openai.chat.completions.create({
-        messages: [
-            { role: "user", content: "What is your name?" },
-            { role: "assistant", content: "I am chatGPT" },
-        ],
-        model: "gpt-3.5-turbo",
-    });
+    console.log(req.params.chatID);
+    const chat = await ChatHistory.findOne({ chatID: req.params.chatID });
+    console.log("User Chat in openAIMiddleWare", chat);
+    //   const modelResponse = await openai.chat.completions.create({
+    //     messages: [
+    //       { role: "user", content: "What is your name?" },
+    //       { role: "assistant", content: "I am chatGPT" },
+    //     ],
+    //     model: "gpt-3.5-turbo",
+    //   });
     const data = {
         role: "assisatant",
-        content: modelResponse.choices[0].message.content,
+        content: "The document is about the Resume of a person name Yuna Shrestha.",
     };
-    const userChat = await ChatHistory.findOneAndUpdate({ userId: req.locals.id }, { $push: { conversation: data } }, { new: true });
+    const userChat = await ChatHistory.findOneAndUpdate({ chatID: req.params.chatID }, { $push: { conversation: data } }, { new: true });
     res.status(200).json({ userChat });
 };
 //# sourceMappingURL=openAiMiddleware.js.map

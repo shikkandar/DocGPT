@@ -2,6 +2,8 @@ import { Request, Response, NextFunction } from "express";
 
 import User from "../models/User.js";
 import { setCookie } from "../utils/cookie-manager.js";
+import { sendVerificationCode } from "../utils/nodemailer.js";
+import { generateOTP, storeOTP } from "../utils/otp.js";
 
 class userController {
   static loginUser = async (
@@ -47,7 +49,7 @@ class userController {
   ) => {
     try {
       const { username, email, password } = req.body;
-
+      
       // Check if the email already exists
       const emailExists = await User.findOne({ email });
 
@@ -57,11 +59,16 @@ class userController {
           .status(400)
           .json({ error: "Bad Request", message: "Email already exists." });
       }
-
+      
       // Create a new user
       const newUser = new User({ username, email, password });
       const savedUser = await newUser.save();
 
+      const otp = generateOTP(4);
+      
+      sendVerificationCode(email,otp);
+
+      await storeOTP(savedUser.id,otp);
       // Set cookie
       await setCookie(req, res, savedUser.email);
 
@@ -69,7 +76,7 @@ class userController {
         success: "Created",
         name: savedUser.username,
         email: savedUser.email,
-      });
+      }); 
     } catch (error) {
       // Handle any unexpected errors
       console.error("Error during user registration:", error);
@@ -80,7 +87,6 @@ class userController {
           .status(400)
           .json({ error: "Bad Request", message: error.message });
       }
-
       return res.status(500).json({
         error: "Internal Server Error",
         message: "Something went wrong.",

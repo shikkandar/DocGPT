@@ -10,8 +10,6 @@ export const getUserFromToken = (
   const privateKey = process.env.JWT_PRIVATE_KEY;
 
   const decoded = jwt.verify(userToken, privateKey);
-  
   req.locals = decoded;
-
   next();
 };

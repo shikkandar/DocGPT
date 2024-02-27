@@ -4,6 +4,7 @@ import Button from '../components/Button';
 import { toast } from 'react-hot-toast';
 import '../../src/assets/css/Form.css';
 
+
 const LoginPage = () => {
 
     const auth = useAuth();

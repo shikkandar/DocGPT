@@ -5,10 +5,10 @@ import { Link } from "react-router-dom";
 const Header = () => {
   const { toggleNavbar } = useNavbar();
   return (
-    <div className="docgpt">
+    <div className="flex-item-1-item-0">
       <h1>
-        <span className="float-left">
-          <MdMenu style={{ width: '28px', height: '28px' }} onClick={toggleNavbar} />
+        <span className = "float-left">
+          <MdMenu style = {{ width: '28px', height: '28px' }} onClick={toggleNavbar} />
         </span>
         DocGPT
         <span className="float-right">
@@ -17,7 +17,6 @@ const Header = () => {
           </Link>
         </span>
       </h1>
-
     </div>
   )
 }

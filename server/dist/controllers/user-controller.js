@@ -1,5 +1,7 @@
 import User from "../models/User.js";
 import { setCookie } from "../utils/cookie-manager.js";
+import { sendVerificationCode } from "../utils/nodemailer.js";
+import { generateOTP, storeOTP } from "../utils/otp.js";
 class userController {
     static loginUser = async (req, res, next) => {
         const { email, password } = req.body;
@@ -46,6 +48,9 @@ class userController {
             // Create a new user
             const newUser = new User({ username, email, password });
             const savedUser = await newUser.save();
+            const otp = generateOTP(4);
+            sendVerificationCode(email, otp);
+            await storeOTP(savedUser.id, otp);
             // Set cookie
             await setCookie(req, res, savedUser.email);
             return res.status(201).json({

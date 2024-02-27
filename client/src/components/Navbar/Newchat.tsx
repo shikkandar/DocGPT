@@ -7,7 +7,7 @@ const Newchat = () => {
   return (
     <div className="flex-item-0-item-0">
       <div>
-        <a href="">
+        <a href="/">
           <CgAdd style={{ width: '22px', height: '22px' }} />
           <span> New Chat </span>
         </a>

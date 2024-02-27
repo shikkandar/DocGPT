@@ -18,7 +18,8 @@ const SignupPage = () => {
 
         toast.loading("Signing Up", { id: 'signup' });
         await auth?.signup(name,email,password);
-        toast.loading("Signed Up", { id: 'signup' });
+        toast.success("Signed Up", { id: 'signup' });
+        window.location.href = 'http://localhost:5173/verifyOTP/';
     }
     return (
         <div className="container">

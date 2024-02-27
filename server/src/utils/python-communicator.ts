@@ -2,8 +2,8 @@ import { Request, Response, NextFunction } from "express";
 import ChatHistory from "../models/ChatHistory.js";
 
 import { spawn } from "child_process";
-import { fileURLToPath } from 'url';
-import path from 'path';
+import { fileURLToPath } from "url";
+import path from "path";
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -34,15 +34,22 @@ export const pdfDataExtractor = (
       content: decodedOutput,
     };
     try {
+      const randomLength = Math.floor(Math.random() * 3) + 3;
+      let title = conversationData.content
+        .split("\n")
+        .slice(0,randomLength ) 
+        .join(" ");
+      if(title.length > 35){
+        title = title.substring(0,35);
+      }
       const userChatHistory = await ChatHistory.findByIdAndUpdate(
         { _id: req.locals },
-        { $push: { conversation: conversationData } },
+        { $set: { title }, $push: { conversation: conversationData } },
         { new: true },
       );
-      console.log(userChatHistory);
-      res.status(200).json({message:'OK'});
+      res.status(200).json({ message: "OK" });
     } catch (error) {
-      console.error("Error updating conversation:", error);
+      console.error("Error updating conversation:", error.message);
       return null;
     }
   });
