@@ -71,6 +71,10 @@
   font-family: apple-font-medium;
   background-color: black;
 }
+.container div h4  span{
+  cursor: pointer;
+  color: blue;
+}
 .container h3{
   font-family: apple-font-light;
 }

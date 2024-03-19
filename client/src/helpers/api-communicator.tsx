@@ -29,7 +29,7 @@ export const authenticateUser = async () => {
     if (res.status !== 200) {
         throw new Error("User unavailable");
     }
-
+    
     const data = await res.data;
     console.log(data);
     return data;
@@ -38,6 +38,7 @@ export const authenticateUser = async () => {
 export const sendOTP = async (otp: string) => {
   const res = await axios.post(`/verifyOTP/${otp}`, {otp: otp})
   console.log(res);
+  return res;
 }
 export const uploadUserDocument = async (file, chatID: string) => {
     const formData = new FormData()

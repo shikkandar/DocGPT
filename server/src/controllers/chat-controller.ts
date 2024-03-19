@@ -46,6 +46,7 @@ class chatController {
       console.error("An error occurred:", error);
     }
   };
+  
   static fetchAllChats = async (
     req: Request,
     res: Response,
@@ -54,5 +55,6 @@ class chatController {
     const allChat = await ChatHistory.find({userId: req.locals.id});
     res.status(200).json({allChat});
   };
+
 }
 export default chatController;

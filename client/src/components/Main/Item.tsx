@@ -2,15 +2,15 @@ import React from 'react'
 const information = [
   {
     sectionClass: 'Capabilities',
-    title: 'Highlight the most crucial clauses in the documents'
+    title: 'Initiate conversation around PDF Documents'
   },
   {
     sectionClass: 'Capabilities',
-    title: 'Highlight the most crucial clauses in the documents'
+    title: 'Summarizes & Interpretes legal, medical, financial docs'
   },
   {
     sectionClass: 'Capabilities',
-    title: 'Highlight the most crucial clauses in the documents'
+    title: 'Records the Chat History of past seven days'
   },
   {
     sectionClass: 'Limitations',
@@ -32,7 +32,7 @@ const information = [
   {
     sectionClass: 'Examples',
     title: 'Highlight the most crucial clauses in the documents'
-  }
+  } 
 ]
 
 const Item = ({ sectionClass }: { sectionClass: string }) => {
@@ -46,11 +46,11 @@ const Item = ({ sectionClass }: { sectionClass: string }) => {
                 <h4>{obj.title}</h4>
               </div>
             );
-          };
+          }
         })
       }
     </>
   )
 }
 
-export default Item
+export default Item;

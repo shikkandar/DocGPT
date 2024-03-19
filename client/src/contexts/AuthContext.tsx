@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, ReactNode } from "react"
 import { authenticateUser, loginUser, signUpUser } from "../helpers/api-communicator"
+import { useLocation } from "react-router-dom"
 type User = {
     name: string,
     email: string,
@@ -17,7 +18,7 @@ const AuthContext = createContext<AuthUser | null>(null);
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
     const [user, setUser] = useState<User | null>(null);
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-
+    
     useEffect(() => {
         async function checkAuthentication() {
             const data = await authenticateUser();
@@ -27,7 +28,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             }
         }
         checkAuthentication();
-    }, []);
+    },[]);
 
     const login = async (email: string, password: string) => {
         const data = await loginUser(email, password);
@@ -35,6 +36,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             setUser({ name: data.name, email: data.email });
             setIsLoggedIn(true);
         }
+        return data;
     }
 
     const signup = async (name: string, email: string, password: string) => {
@@ -44,9 +46,10 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         console.log(data);
         
         if (data) {
-            setUser({ name: data.name, email: data.name });
+            setUser({ name: data.name, email: data.email });
             setIsLoggedIn(true);
         }
+        return data;
     }
     const logout = () => { }
 

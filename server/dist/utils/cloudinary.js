@@ -4,12 +4,9 @@ import ChatHistory from "../models/ChatHistory.js";
 // Cloudinary configuration
 //TODO: need to put it into env file
 cloudinary.config({
-    // cloud_name: process.env.CLOUDINARY_NAME,
-    cloud_name: "dmyjhicsl",
-    // api_key: process.env.CLOUDINARY_API_KEY,
-    api_key: "822545885516375",
-    // api_secret: process.env.CLOUDINARY_API_SECRET,
-    api_secret: "bY84kME2oPJzpdFlBvSJJ2cYCfk",
+    cloud_name: 'dmyjhicsl',
+    api_key: '822545885516375',
+    api_secret: 'bY84kME2oPJzpdFlBvSJJ2cYCfk'
 });
 // Cloudinary upload function
 const uploadFileOnCloudinary = async (req, res, next, filePath) => {

@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { RiFileUploadFill } from "react-icons/ri";
+import { SiAddthis } from "react-icons/si";
 import { IoMdSend } from "react-icons/io";
 import { uploadUserDocument } from "../../helpers/api-communicator";
 import { sendUserMessage } from "../../helpers/api-communicator";
@@ -54,8 +54,8 @@ const FileInput: React.FC = () => {
                     />
                 </form>
                 <button type="button" className="btn-0" onClick={handleFileSubmit}>
-                    <RiFileUploadFill style={{ width: '32px', height: '32px' }} />
-                </button>
+                    <SiAddthis style={{ width: '32px', height: '32px' }} />
+                </button> 
             </div>
             <div className="text-and-button-container">
                 <form>

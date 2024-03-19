@@ -10,15 +10,18 @@ axios.defaults.withCredentials = true;
 import { BrowserRouter as Router } from 'react-router-dom'
 import { AuthProvider } from './contexts/AuthContext.tsx'
 import { ChatProvider } from './contexts/ChatContext.tsx';
+import { NavbarProvider } from './contexts/NavbarContext.tsx';
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
     <AuthProvider>
       <ChatProvider>
-      <Router>
-        <Toaster />
-        <App />
-      </Router>
+        <NavbarProvider>
+          <Router>
+            <Toaster />
+            <App />
+          </Router>
+        </NavbarProvider>
       </ChatProvider>
     </AuthProvider>
   </React.StrictMode>,

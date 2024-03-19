@@ -15,14 +15,14 @@ export const verifyToken = (req, res, next) => {
     }
     return new Promise((resolve, reject) => {
         return jwt.
-            verify(token, process.env.JWT_PUBLIC_KEY, (err, success) => {
+            verify(token, process.env.JWT_PRIVATE_KEY, (err, success) => {
             if (!success) {
                 console.log(err.message);
-                return res.status(401).json({ message: 'Token Expired' });
             }
             else {
                 resolve();
                 res.locals.jwtData = success;
+                console.log(res.locals);
                 return next();
             }
         });

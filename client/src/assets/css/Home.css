@@ -71,7 +71,7 @@ body {
 }
 .flex-item-0-item-0 button {
 	position: relative;
-	right: -7rem;
+	right: -10rem;
 	display: none;
 	color: white;
 	background-color: black;
@@ -103,12 +103,10 @@ body {
 	padding: auto auto;
 	font-size: 90%;
 }
-.flex-item-0-item-2 button {
+.flex-item-0-item-2 span {
 	position: relative;
-	top: -0.5rem;
-}
-.flex-item-0-item-2 button:hover {
 	cursor: pointer;
+	top: -0.5rem;
 }
 .modal {
 	width: 20vw;
@@ -120,14 +118,15 @@ body {
 	font-family: apple-font-medium;
 }
 .modal div {
-	margin: 1rem 1rem;
-}
-.modal a {
+	margin: 1rem 0rem 0rem 1rem;
 	text-decoration: none;
 	color: white;
 }
-.modal a span {
-  vertical-align: super;
+.modal .more-options{
+	display: flex;
+	justify-content: center;
+	align-items: end;
+	width: max-content;
 }
 .flex-item-1-item-0 {
 	height: 30vh;
@@ -312,3 +311,10 @@ textarea {
 		width: 80vw;
 	}
 }
+@media screen and (max-width: 1024px) {
+	/* Styles specific to large screens */
+	.modal {
+		bottom: 7.5rem;
+	}
+  }
+  

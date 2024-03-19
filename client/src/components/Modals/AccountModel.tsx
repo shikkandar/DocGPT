@@ -2,29 +2,38 @@ import { MdOutlineSettings, MdLogout, MdOutlineHelpCenter, MdEdit } from "react-
 const AccountModel = () => {
   return (
     <div className='modal'>
-      <div>
-        <a href="">
-          <MdEdit style={{width:'22px', height:'22px'}} />
-          <span>Custom instructions</span>
-        </a>
+      <div className="more-options">
+        <div>
+          <MdEdit size={22} />
+        </div>
+        <div>
+          <span> Custom Instructions </span>
+        </div>
       </div>
-      <div>
-        <a href="">
-          <MdOutlineSettings style={{width:'22px', height:'22px'}} />
+      <div className="more-options">
+        <div>
+          <MdOutlineSettings size={22} />
+        </div>
+        <div>
           <span>Settings</span>
-        </a>
+        </div>
       </div>
-      <div>
-        <a href="">
-          <MdOutlineHelpCenter style={{width:'22px', height:'22px'}} />
+      <div className="more-options">
+        <div>
+          <MdOutlineHelpCenter size={22} />
+        </div>
+        <div>
           <span> Help and FAQ</span>
-        </a>
+        </div>
       </div>
-      <div>
-        <a href="">
-          <MdLogout style={{width:'22px', height:'22px'}} />
+      <hr />
+      <div className="more-options">
+        <div>
+          <MdLogout size={22} />
+        </div>
+        <div>
           <span>Logout</span>
-        </a>
+        </div> 
       </div>
     </div>
   )

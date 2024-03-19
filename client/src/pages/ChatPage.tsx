@@ -1,23 +1,25 @@
 import React, { useEffect, useRef } from 'react';
 import Navbar from '../components/Navbar';
-import { NavbarProvider } from '../contexts/NavbarContext';
+import { NavbarProvider, useNavbar } from '../contexts/NavbarContext';
 import InputBox from '../components/InputBox';
-import Header from '../components/Main/Header';
+// import Header from '../components/Main/Header';
 import ChatItem from '../components/chat/ChatItem';
 import PdfViewer from '../components/PdfViewer';
 import { useChat } from '../contexts/ChatContext';
 import '../../src/assets/css/Chat.css';
 import { useParams } from 'react-router';
 import { fetchUserMessage } from '../helpers/api-communicator';
+import { MdMenu, MdAdd } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 const ChatPage: React.FC = () => {
   const chat = useChat();
   const chatRef = useRef<HTMLDivElement>(null);
-  const {chatID} = useParams();
+  const { toggleNavbar } = useNavbar();
+  const { chatID } = useParams();
   console.log('initial chat', chat);
   console.log(chatID);
-  
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -30,16 +32,15 @@ const ChatPage: React.FC = () => {
         console.error('Error fetching user message:', error);
       }
     };
-  
+
     fetchData();
   }, []);
-  
+
   useEffect(() => {
     // Scroll to the bottom of the chat box when conversation updates
     if (chatRef.current) {
       chatRef.current.scrollTop = chatRef.current.scrollHeight;
     }
-    
   }, [chat.conversation]);
 
   return (
@@ -47,11 +48,23 @@ const ChatPage: React.FC = () => {
       <div className='main-container'>
         <Navbar />
         <div className='main-flex-item-1'>
-          <Header />
+          <div className='flex-item-1-item-0-chat'>
+            <h1>
+              <span className='float-left'>
+                <MdMenu style={{ width: '28px', height: '28px' }} onClick={toggleNavbar} />
+              </span>
+              DocGPT
+              <span className='float-right'>
+                <Link to='/'>
+                  <MdAdd style={{ width: '28px', height: '28px' }} />
+                </Link>
+              </span>
+            </h1>
+          </div>
           <div className='chat-box' ref={chatRef}>
             <PdfViewer />
             {chat.conversation.map((item, index) => (
-              <ChatItem message = {item.content} role={item.role} key={index} />
+              <ChatItem message={item.content} role={item.role} key={index} />
             ))}
           </div>
           <InputBox />

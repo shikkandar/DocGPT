@@ -29,7 +29,6 @@ const VerifyOTP = () => {
                 <h1>DocGPT</h1>
                 <h4>Verify Email</h4>
                 <form onSubmit={handleSubmit} >
-
                     <Input
                         type="text"
                         value={otp == undefined ? '' : otp}

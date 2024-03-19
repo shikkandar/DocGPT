@@ -17,7 +17,8 @@ export async function storeOTP(user_id, otp) {
 }
 export async function verifyOTP(req, res, next) {
     const user_id = req.locals.id;
-    const otp_entered = req.params.otp;
+    console.log(req.otp);
+    const otp_entered = req.params.otp || req.otp;
     const otpDocument = await OTP.findOne({ user_id: user_id });
     if (otpDocument && otpDocument.otp_code === otp_entered) {
         // OTP is valid
@@ -27,7 +28,7 @@ export async function verifyOTP(req, res, next) {
         res.status(200).json({ message: 'email verified' });
     }
     else {
-        res.json({ message: 'Email not verified' });
+        res.json({ message: 'Incorrect OTP' });
     }
 }
 //# sourceMappingURL=otp.js.map

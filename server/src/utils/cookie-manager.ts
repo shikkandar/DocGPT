@@ -5,9 +5,10 @@ import { createToken } from "./token-manager.js";
 export const setCookie = async (req, res, email) => {
   // Find the newly created user
   const savedUser = await User.findOne({ email });
-
+  
+  console.log('savedUser', savedUser.email);
   // Generate a token for the user
-  const token = createToken(savedUser._id.toString(), savedUser.username);
+  const token = createToken(savedUser._id.toString(), savedUser.email);
 
   // Set the token as a cookie
   console.log("before passing")

@@ -101,22 +101,24 @@ class userController {
   ) => {
     try {
       // Check if the email already exists
-      const user = await User.findOne({ email: res.locals.jwtData.email });
-
+      const user = await User.findOne({ email: res.locals.jwtData.name });
+      console.log(user);
       if (!user) {
         return res
           .status(401)
           .json({ error: "Bad Request", message: "User not registered" });
       }
-      if (user.email !== res.locals.jwtData.email) {
-        res.status(401).json({ message: "Permission Denied" });
+      console.log('User email', user.email)
+      console.log('Cookie email', res.locals.jwtData.name)
+      if (user.email !== res.locals.jwtData.name) {
+        return res.status(401).json({ message: "Permission Denied" });
       }
 
       return res
-        .status(201)
+        .status(200)
         .json({ message: "OK", name: user.username, email: user.email });
     } catch (error) {
-      // Handle any unexpected errors
+      // Handle any unexpzzected errors
       console.error("Error during user token verification :", error);
 
       // Check for specific error types e.g(., validation errors)
@@ -132,6 +134,7 @@ class userController {
       });
     }
   };
+
   static uploadFile = async (
     req: Request,
     res: Response,
