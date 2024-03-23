@@ -14,13 +14,17 @@ const FileInput: React.FC = () => {
     const chat = useChat();
     const { chatID } = useParams();
 
-    const handleFileSubmit = async (e) => {
+    const handleFileSubmit = (e) => {
         e.preventDefault();
-
-        fileInput.current.click()
-
-        if (file) {
-            await uploadUserDocument(file, chat.chatID);
+        
+        fileInput.current.click();
+    }
+    
+    const handleFileInputChange = async (e) => {
+        const selectedFile = e.target.files[0];
+    
+        if (selectedFile) {
+            await uploadUserDocument(selectedFile, chat.chatID);
         }
     }
     const handleMessageSubmit = async (e) => {
@@ -45,11 +49,7 @@ const FileInput: React.FC = () => {
                     <input
                         type="file"
                         style={{ display: "none" }}
-                        onChange={(e) => {
-                            if (e.target.files) {
-                                setFile(e.target.files[0]);
-                            }
-                        }}
+                        onChange={handleFileInputChange}
                         ref={fileInput}
                     />
                 </form>

@@ -10,7 +10,7 @@ const HomePage = () => {
   const auth = useAuth();
   const navigate = useNavigate();
   return (
-    <NavbarProvider>
+    <>
       {
         auth?.isLoggedIn == false ? (
           <>
@@ -26,7 +26,7 @@ const HomePage = () => {
       </div>
         )
       }
-    </NavbarProvider>
+    </>
   )
 }
 

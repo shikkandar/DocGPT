@@ -44,7 +44,6 @@ const ChatPage: React.FC = () => {
   }, [chat.conversation]);
 
   return (
-    <NavbarProvider>
       <div className='main-container'>
         <Navbar />
         <div className='main-flex-item-1'>
@@ -62,7 +61,9 @@ const ChatPage: React.FC = () => {
             </h1>
           </div>
           <div className='chat-box' ref={chatRef}>
-            <PdfViewer />
+            <div className='pdf-window'>
+              <PdfViewer/>
+            </div>
             {chat.conversation.map((item, index) => (
               <ChatItem message={item.content} role={item.role} key={index} />
             ))}
@@ -70,7 +71,6 @@ const ChatPage: React.FC = () => {
           <InputBox />
         </div>
       </div>
-    </NavbarProvider>
   );
 };
 
