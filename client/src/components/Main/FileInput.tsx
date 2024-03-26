@@ -1,14 +1,12 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef } from "react";
 import { SiAddthis } from "react-icons/si";
 import { IoMdSend } from "react-icons/io";
 import { uploadUserDocument } from "../../helpers/api-communicator";
 import { sendUserMessage } from "../../helpers/api-communicator";
 import { useChat } from "../../contexts/ChatContext";
-import { generateUniqueID } from "../../helpers/uuid";
 import { useParams } from "react-router";
 
 const FileInput: React.FC = () => {
-    const [file, setFile] = useState();
     const fileInput = useRef<HTMLInputElement>(null);
     const messageInput = useRef<HTMLTextAreaElement>(null);
     const chat = useChat();
@@ -29,16 +27,18 @@ const FileInput: React.FC = () => {
     }
     const handleMessageSubmit = async (e) => {
         e.preventDefault();
-        console.log(messageInput.current?.value)
+
         const message = {
             role: 'user',
             content: messageInput.current?.value
         }
-        console.log(message);
+        
         chat.pushUserMessagesToConversation(message);
         const userChat = await sendUserMessage(messageInput.current?.value, chatID)
+        console.log('userchat:',userChat);
         chat.updateUserMessageWithOpenAIResponse(userChat.conversation);
         chat.updateUserPdfUrl(userChat.pdfSecureUrl);
+        messageInput.current.value = "";
     }
 
     return (
